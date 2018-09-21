@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+
+  <p>I'm showing the clients list!</p>
+}
+
+
+
+@foreach(var client in Model)
+{
+  <ul>
+    <li><a href = "/clients/@client.id">@client.name</a></li>
+  </ul>
+}

@@ -1,0 +1,20 @@
+@{
+  Layout = "_Layout";
+
+
+ <h1>Hi, you click on Stylist, I should show you the list of freaking clients! But I'm not doing that cuz Imma D*ck!</h1>
+}
+
+
+
+@foreach (var client in Model["Stylist"].GetClient())
+{
+<h4><a href='/stylists/@client.id'>@client.name</a></h4>
+<ol>
+<li>@client.clientName</li>
+  </ol>
+}
+
+
+<p><a href="/stylists">Back to Stylist's List</a></p>
+<p><a href='/'>back Home</a></p>
