@@ -15,7 +15,7 @@ namespace HairSalon.Controllers
       return View(allClients);
     }
 
-    [HttpGet("stylists/{id}/clients/new")]
+    [HttpGet("stylists/clients/new")]
     public ActionResult CreateForm(int id)
     {
       Stylist foundStylist = Stylist.Find(id);
@@ -26,7 +26,7 @@ namespace HairSalon.Controllers
     public ActionResult Create()
     {
       // description = Request.Form("Description");
-      Client newClient = new Client(Request.Form["clientName"],  Int32.Parse(Request.Form["stylistId"]));
+      Client newClient = new Client(Request.Form["clientsName"],  Int32.Parse(Request.Form["stylistId"]));
       newClient.Save();
       List<Client> allClients = Client.GetAll();
       return View("Index", allClients);
