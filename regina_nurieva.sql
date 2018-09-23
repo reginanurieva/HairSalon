@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:8889
--- Generation Time: Sep 21, 2018 at 11:40 PM
+-- Generation Time: Sep 23, 2018 at 10:05 PM
 -- Server version: 5.7.23
 -- PHP Version: 7.2.8
 
@@ -17,10 +17,10 @@ SET time_zone = "+00:00";
 /*!40101 SET NAMES utf8mb4 */;
 
 --
--- Database: `hair_salon`
+-- Database: `regina_nurieva`
 --
-CREATE DATABASE IF NOT EXISTS `hair_salon` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
-USE `hair_salon`;
+CREATE DATABASE IF NOT EXISTS `regina_nurieva` DEFAULT CHARACTER SET utf8 COLLATE utf8_general_ci;
+USE `regina_nurieva`;
 
 -- --------------------------------------------------------
 
@@ -33,6 +33,18 @@ CREATE TABLE `clients` (
   `name` varchar(255) NOT NULL,
   `stylist_id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+--
+-- Dumping data for table `clients`
+--
+
+INSERT INTO `clients` (`id`, `name`, `stylist_id`) VALUES
+(1, 'Jonny', 1),
+(2, 'Mark', 2),
+(3, 'Ryan', 1),
+(4, 'Mark', 1),
+(5, 'Emily', 2),
+(6, 'Jo', 1);
 
 -- --------------------------------------------------------
 
@@ -77,7 +89,7 @@ ALTER TABLE `stylists`
 -- AUTO_INCREMENT for table `clients`
 --
 ALTER TABLE `clients`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
 
 --
 -- AUTO_INCREMENT for table `stylists`
