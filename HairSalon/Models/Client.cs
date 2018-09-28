@@ -105,7 +105,7 @@ namespace HairSalon.Models
       conn.Open();
 
       var cmd = conn.CreateCommand() as MySqlCommand;
-      cmd.CommandText = @"DELETE FROM clients;";
+      cmd.CommandText = @"DELETE FROM clients; DELETE FROM stylists_clients;";
 
       cmd.ExecuteNonQuery();
 
@@ -134,6 +134,10 @@ namespace HairSalon.Models
       conn.Close();
     }
   }
+
+
+
+
 
     // public override bool Equals(System.Object otherClient)
     // {
