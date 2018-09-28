@@ -154,5 +154,65 @@ namespace HairSalon.Models
           }
           return allStylistClients;
         }
+
+
+        public void AddSpecialty(Specialty newSpecialty)
+    {
+      MySqlConnection conn = DB.Connection();
+      conn.Open();
+      var cmd = conn.CreateCommand() as MySqlCommand;
+      cmd.CommandText = @"INSERT INTO stylists_specialties (stylist_id, specialty_id) VALUES (@StylistId, @SpecialtyId);";
+
+      MySqlParameter stylist_id = new MySqlParameter();
+      stylist_id.ParameterName = "@StylistId";
+      stylist_id.Value = newSpecialty.GetId();
+      cmd.Parameters.Add(stylist_id);
+
+      MySqlParameter specialty_id = new MySqlParameter();
+      specialty_id.ParameterName = "@SpecialtyId";
+      specialty_id.Value = _id;
+      cmd.Parameters.Add(specialty_id);
+
+      cmd.ExecuteNonQuery();
+      conn.Close();
+      if (conn != null)
+      {
+        conn.Dispose();
+      }
+    }
+
+
+//     public List<Specialty> GetSpecialties()
+// {
+// MySqlConnection conn = DB.Connection();
+// conn.Open();
+// MySqlCommand cmd = conn.CreateCommand() as MySqlCommand;
+// cmd.CommandText = @"SELECT authors.* FROM books
+// JOIN books_authors ON (books.id = books_authors.book_id)
+// JOIN authors ON (books_authors.author_id = authors.id)
+// WHERE books.id = @BookId;";
+//
+// MySqlParameter bookIdParameter = new MySqlParameter();
+// bookIdParameter.ParameterName = "@BookId";
+// bookIdParameter.Value = _id;
+// cmd.Parameters.Add(bookIdParameter);
+//
+// MySqlDataReader rdr = cmd.ExecuteReader() as MySqlDataReader;
+// List<Author> allAuthors = new List<Author>{};
+//
+// while(rdr.Read())
+// {
+//   int authorId = rdr.GetInt32(0);
+//   string authorName = rdr.GetString(1);
+//   Author newAuthor = new Author(authorName, authorId);
+//   allAuthors.Add(newAuthor);
+// }
+// conn.Close();
+// if (conn != null)
+// {
+//   conn.Dispose();
+// }
+// return allAuthors;
+// }
   }
 }

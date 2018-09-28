@@ -37,14 +37,16 @@ namespace HairSalon.Controllers
       model.Add("Stylist", selectedStylist);
       model.Add("Client", stylistClients);
       return View(model);
-      // Client newClient = Stylist.GetClients();
-      // Client newClient = Client.GetClients(id);
-      //model.Add("stylist", selectedStylist);
-      //model.Add("clients", newClient);
-      // List<Item> categoryItems = selectedCategory.GetItems();
-      // model.Add("category",selectedCategory);
-      // model.Add("items",categoryItems);
-      //return View(selectedStylist);
+    }
+
+
+  [HttpPost("/stylists/{stylistId}/specialties/new")]
+  public ActionResult AddSpecialty(int stylistId)
+  {
+  Stylist stylist = Stylist.Find(stylistId);
+  Specialty specialty = Specialty.Find(Int32.Parse(Request.Form["specialty-id"]));
+  stylist.AddSpecialty(specialty);
+  return RedirectToAction("Index");
     }
   }
 }
