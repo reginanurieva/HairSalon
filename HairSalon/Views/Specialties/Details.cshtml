@@ -10,11 +10,22 @@
 
 <hr />
 
+@if (@Model["listStylists"].Count != 0)
+{
+  <h4>Following stylists can perform this procedure:</h4>
+  <ul>
+    @foreach (Stylist stylist in @Model["currentStylist"])
+    {
+      <li>@stylist.GetName()</li>
+    }
+  </ul>
+}
+
 <h4>Add a stylist for this specialty:</h4>
-<form action='/specialties/@Model["selectedSpecialty"].GetId()/stylists/new' method='post'>
-  <label for='stylist-id'>Select a stylist</label>
-  <select id='stylist-id' name='stylist-id' type='text'>
-    @foreach (var stylist in @Model["allStylists"])
+<form action='/specialties/@Model["selectedSpecialty"].GetId()' method='post'>
+  <label for='StylistId'>Select a stylist</label>
+  <select id='StylistId' name='StylistId' type='text'>
+    @foreach (var stylist in @Model["listStylists"])
     {
       <option value='@stylist.GetId()'>@stylist.GetName()</option>
     }

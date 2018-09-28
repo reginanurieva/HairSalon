@@ -9,13 +9,12 @@ namespace HairSalon.Models
   {
     private int _id;
     private string _description;
-    private int _stylist_id;
+    //private int _stylist_id;
 
-    public Specialty(string description, int stylistId, int id=0)
+    public Specialty(string description, int id=0)
     {
       _id=id;
       _description=description;
-      _stylist_id=stylistId;
     }
 
     public int GetId()
@@ -28,15 +27,15 @@ namespace HairSalon.Models
       return _description;
     }
 
-    public int GetStylistId()
-    {
-      return _stylist_id;
-    }
-
-    public void SetStylistId(int stylistId)
-    {
-      _stylist_id = stylistId;
-    }
+    // public int GetStylistId()
+    // {
+    //   return _stylist_id;
+    // }
+    //
+    // public void SetStylistId(int stylistId)
+    // {
+    //   _stylist_id = stylistId;
+    // }
 
     public void Save()
     {
@@ -103,10 +102,11 @@ namespace HairSalon.Models
     int specialtyId = 0;
     string specialtyDescription = "";
 
-    rdr.Read();
+    while(rdr.Read())
+    {
     specialtyId = rdr.GetInt32(0);
     specialtyDescription = rdr.GetString(1);
-
+    }
     Specialty newSpecialty = new Specialty(specialtyDescription, specialtyId);
     conn.Close();
     if (conn != null)
