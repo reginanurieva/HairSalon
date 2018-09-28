@@ -1,19 +1,20 @@
 @{
   Layout = "_Layout";
 
-  <p>I'm supposed to let you enter the clients's info</p>
 }
+<div class="container">
 
 
 
 
-
-
+<h1>Please enter a client name: </h1>
 <form action='/clients' method='post'>
 
   <label for='clientName'>Client name</label>
   <input id='clientsName' name='clientsName' type='text'>
   <input id = 'stylistId' name='stylistId' type = 'hidden' value = @Model.GetId()>
-
-  <button type='submit'>Add Client</button>
+<br>
+<br>
+  <button type='submit' class="btn btn-danger">Add Client</button>
 </form>
+</div>
