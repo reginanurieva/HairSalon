@@ -1,0 +1,16 @@
+@{
+  Layout = "_Layout";
+}
+
+<div class="container">
+<h1>Update the Info for @Model.GetName()</h1>
+<hr />
+
+<form action="/stylists/@Model.GetId()/update" method="post">
+    <label for="name">Name:</label>
+    <input type="text" name="newName" value="@Model.GetName()">
+    <button class = "btn btn-danger" type="submit">Update</button>
+    <a href="/stylists/@Model.GetId()/delete" class = 'btn btn-danger'>Remove Employee</a>
+</form>
+<h4><a href="/books">Go back</a></h4>
+</div>

@@ -1,0 +1,14 @@
+@{
+  Layout = "_Layout";
+}
+
+@using HairSalon.Models;
+<div class = "container">
+<h1>Selected Client: @Model.name</h1>
+<hr />
+
+  <a href="/clients/@Model.id/delete" class = 'btn btn-danger'>Delete Client</a>
+  <br>
+  <br>
+  <p><a href = "/" class="btn btn-danger">Home</a></p>
+</div>

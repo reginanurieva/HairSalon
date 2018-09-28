@@ -43,11 +43,19 @@ namespace HairSalon.Controllers
     }
 
     [HttpGet("/clients/{id}")]
-    public ActionResult Detail(int id)
+    public ActionResult Details(int id)
     {
       Client newClient = Client.Find(id);
 
       return View(newClient);
+    }
+
+    [HttpGet("/clients/{clientId}/delete")]
+    public ActionResult DeleteOne(int clientId)
+    {
+      Client thisClient = Client.Find(clientId);
+      thisClient.Delete();
+      return RedirectToAction("Index");
     }
 
     [HttpGet("/clients/{id}/update")]

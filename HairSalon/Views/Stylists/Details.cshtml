@@ -16,17 +16,17 @@ else
 @foreach (var client in Model["Stylist"].GetClient())
 
 {
-<li>@client.name</li>
+<li><a href='/clients/@client.id'>@client.name</a></li>
 }
 
 </ol>
 }
 
-<h2><a href="/specialties" >I'm pretty sure that you can use our special offer today</a></h2>
+<h2><a href="/specialties" >Add Specialty to this Stylist</a></h2>
 
 <p><a href='/stylists/@Model["Stylist"].GetId()/clients/new' class="btn btn-success">Add New Client</a></p>
-<a href="/stylists" class="btn btn-warning">Back to Stylist's List</a>
-<a href="/stylists" class="btn btn-warning">Back to Stylist's List</a>
+<a href="/stylists" class="btn btn-warning">Back to Stylist's List</a><br>
+<br><a href="/stylists/@Model["Stylist"].GetId()/update" class="btn btn-primary">Update Employee Info</a>
 <br>
 <br>
 <a href = "/" class="btn btn-danger">Home</a>
