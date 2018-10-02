@@ -139,22 +139,22 @@ namespace HairSalon.Models
 
 
 
-    // public override bool Equals(System.Object otherClient)
-    // {
-    //   if (!(otherClient is Client))
-    //   {
-    //     return false;
-    //   }
-    //   else
-    //   {
-    //
-    //     Client newClient = (Client) otherClient;
-    //     bool idEquality = (this.id == newClient.id);
-    //
-    //     bool descriptionEquality = (this.name == newClient.name);
-    //     return (nameEquality && idEquality);
-    //   }
-    // }
+    public override bool Equals(System.Object otherClient)
+    {
+      if (!(otherClient is Client))
+      {
+        return false;
+      }
+      else
+      {
+
+        Client newClient = (Client) otherClient;
+        bool idEquality = (this.id == newClient.id);
+
+        bool descriptionEquality = (this.name == newClient.name);
+        return (descriptionEquality && idEquality);
+      }
+    }
 
     public override int GetHashCode()
     {
