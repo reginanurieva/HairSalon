@@ -43,38 +43,38 @@ namespace HairSalon.Tests
      }
 
 
-     // [TestMethod]
-     //  public void Find_FindsStylistInDB_Stylist()
-     //  {
-     //      //Arrange
-     //      Stylist testStylist = new Stylist("Chan", 0);
-     //      testStylist.Save();
-     //
-     //      //Act
-     //      Stylist foundStylist = Stylist.Find(testStylist.id);
-     //
-     //      //Assert
-     //      Assert.AreEqual(testStylist, foundStylist);
-     //  }
+     [TestMethod]
+      public void Find_FindsStylistInDB_Stylist()
+      {
+          //Arrange
+          Stylist testStylist = new Stylist("Chan", 0);
+          testStylist.Save();
+
+          //Act
+          Stylist foundStylist = Stylist.Find(testStylist.GetId());
+
+          //Assert
+          Assert.AreEqual(testStylist.GetName(), foundStylist.GetName());
+      }
 
 
-    //  [TestMethod]
-    // public void Edit_UpdatesStylistInDB_String()
-    // {
-    //     //Arrange
-    //     string firstStylist = "Jack";
-    //     Stylist testStylist = new Stylist (firstStylist, 1);
-    //     testStylist.Save();
-    //     string secondStylist = "Mark";
-    //
-    //     //Act
-    //     testStylist.Update(secondStylist);
-    //
-    //     string result = Stylist.Find(testStylist.Id).name;
-    //
-    //     //Assert
-    //     Assert.AreEqual(secondStylist, result);
-    // }
+     [TestMethod]
+    public void Edit_UpdatesStylistInDB_String()
+    {
+        //Arrange
+        string firstStylist = "Jack";
+        Stylist testStylist = new Stylist (firstStylist, 1);
+        testStylist.Save();
+        string secondStylist = "Mark";
+
+        //Act
+        testStylist.Update(secondStylist);
+
+        string result = Stylist.Find(testStylist.GetId()).GetName();
+
+        //Assert
+        Assert.AreEqual(secondStylist, result);
+    }
 
   }
 }
