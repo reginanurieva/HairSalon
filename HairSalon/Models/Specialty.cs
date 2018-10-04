@@ -15,6 +15,7 @@ namespace HairSalon.Models
     {
       _id=id;
       _description=description;
+    //  _stylist_id=stylistId;
     }
 
     public int GetId()
@@ -50,6 +51,11 @@ namespace HairSalon.Models
       description.Value = this._description;
       cmd.Parameters.Add(description);
 
+      // MySqlParameter stylistId = new MySqlParameter();
+      // stylistId.ParameterName = "@stylistId";
+      // stylistId.Value = this._stylist_id;
+      // cmd.Parameters.Add(stylistId);
+
       cmd.ExecuteNonQuery();
       _id = (int) cmd.LastInsertedId;
       conn.Close();
@@ -58,6 +64,40 @@ namespace HairSalon.Models
         conn.Dispose();
       }
     }
+
+    public override bool Equals(System.Object otherSpecialty)
+       {
+         if (!(otherSpecialty is Specialty))
+         {
+           return false;
+         }
+         else
+         {
+
+           Specialty newSpecialty = (Specialty) otherSpecialty;
+           bool idEquality = (GetId() == newSpecialty.GetId());
+           bool descriptionEquality = (GetDescription() == newSpecialty.GetDescription());
+           return (descriptionEquality && idEquality);
+         }
+       }
+    public override int GetHashCode()
+       {
+         return GetDescription().GetHashCode();
+       }
+
+       public static void DeleteAll()
+           {
+               MySqlConnection conn = DB.Connection();
+               conn.Open();
+               var cmd = conn.CreateCommand() as MySqlCommand;
+               cmd.CommandText = @"DELETE FROM specialties;";
+               cmd.ExecuteNonQuery();
+               conn.Close();
+               if (conn != null)
+               {
+                   conn.Dispose();
+               }
+           }
 
 
       public static List<Specialty> GetAll()
